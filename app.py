@@ -33,8 +33,8 @@ with st.form(key='profile_form'):
         #モデルの設定    
         bertscore = evaluate.load("bertscore")
         #スライドイメージマスタデータファイルを開く
-        with open("/content/drive/MyDrive/Pytorch実装用コード/吾輩は猫である.txt") as f:
-        list = [line.strip() for line in f]
+        with open("picture\text.txt") as f:
+            list = [line.strip() for line in f]
         #モデルの設定
         model = 'roberta-base'
         #スコアリストの作成
