@@ -15,7 +15,7 @@ st.subheader('自己紹介')
 st.text('こんにちは')
 
 #pip install -q evaluate
-install evaluate
+#install evaluate
 import evaluate
 
 with st.form(key='profile_form'):
