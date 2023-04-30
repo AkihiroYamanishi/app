@@ -5,8 +5,8 @@
 
 import streamlit as st
 from PIL import Image
-from bert_score import score
-
+#from bert_score import score
+import evaluate
 
 
 st.title('山アプリ')
@@ -16,7 +16,6 @@ st.text('こんにちは')
 
 #pip install -q evaluate
 #install evaluate
-import evaluate
 
 with st.form(key='profile_form'):
     #form開始
