@@ -11,11 +11,6 @@ st.caption('これは実験用のものです')
 st.subheader('自己紹介')
 st.text('こんにちは')
 
-#画像
-image = Image.open('./Shohei_Ohtani_(52251755266)_(cropped).jpg')
-st.image(image, width=200)
-
-
 with st.form(key='profile_form'):
     #動画
     #video_file = open('https://www.youtube.com/watch?v=mmK_gRbb2lQ')
@@ -34,3 +29,7 @@ with st.form(key='profile_form'):
     #キャンセルか送信で分ける
     if submit_btn:
         st.text(f'ようこそ!{name}さん！')
+        #画像
+        image = Image.open('./Shohei_Ohtani_(52251755266)_(cropped).jpg')
+        st.image(image, width=200)
+
