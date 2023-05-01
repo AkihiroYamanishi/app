@@ -1,3 +1,2 @@
 transformers
-torch
-https://github.com/huggingface/evaluate.git
+huggingface/evaluate
