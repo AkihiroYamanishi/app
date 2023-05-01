@@ -1,3 +1,2 @@
 transformers
-huggingface/evaluate
-bert_score
+evaluate-metric/bertscore
