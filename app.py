@@ -47,9 +47,9 @@ with st.form(key='profile_form'):
         #ベスト5を表示
         for i in range(3):
             #best3を出力
-            st.text(f'〇{best_score[i][1]}')
+            #st.text(f'〇{best_score[i][1]}')
             #print(best_score[i][1][0:3],)
             #画像を出力
             image = Image.open(f'./picture/{best_score[i][1][0:5]}.jpg')
-            st.image(image, width=1000)
+            st.image(image, width=600)
 
