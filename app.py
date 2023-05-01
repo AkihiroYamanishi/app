@@ -59,5 +59,5 @@ with st.form(key='profile_form'):
             #print(best_score[i][1][0:3],)
             #画像を出力
             image = Image.open(f'./picture/{best_score[i][1][0:5]}.jpg')
-            st.image(image, use_container_width=True)
+            st.image(image, use_column_width=True)
 
