@@ -58,6 +58,6 @@ with st.form(key='profile_form'):
             #st.text(f'〇{best_score[i][1]}')
             #print(best_score[i][1][0:3],)
             #画像を出力
-            image = Image.open(f'./picture/{best_score[i][1][0:5]}.jpg')
+            image = Image.open(f'./picture/{best_score[i][1][0:5]}.jpg',use_container_width=True)
             st.image(image, width=600)
 
