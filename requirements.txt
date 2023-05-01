@@ -1,2 +1,3 @@
-transformers
-huggingface/evaluate
+evaluate
+git+https://github.com/huggingface/evaluate@{COMMIT_PLACEHOLDER}
+bert_score
