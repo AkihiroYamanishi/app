@@ -56,7 +56,7 @@ with st.form(key='profile_form'):
             ls_score_pred.append([score_pred, data])
             best_score = sorted(ls_score_pred,reverse=True)
         #ベスト5を表示
-        for i in range(3):
+        for i in range(5):
             #best3を出力
             #st.text(f'〇{best_score[i][1]}')
             #print(best_score[i][1][0:3],)
