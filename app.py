@@ -9,11 +9,18 @@ from PIL import Image
 #from bert_score import score
 import evaluate
 from evaluate import load
-
-st.title('山アプリ')
-st.caption('これは実験用のものです')
-st.subheader('自己紹介')
-st.text('こんにちは')
+#image = Image.open(f'./picture/{best_score[i][1][0:5]}.jpg')
+#st.image(image, width=600)
+st.set_page_config(
+    page_title="スライド検索アプリ", 
+    #page_icon=image, 
+    layout="wide", 
+    initial_sidebar_state="auto", 
+    )
+#st.title('山アプリ')
+#st.caption('これは実験用のものです')
+#st.subheader('自己紹介')
+#st.text('こんにちは')
 
 #pip install -q evaluate
 #install evaluate
@@ -21,6 +28,7 @@ st.text('こんにちは')
 with st.form(key='profile_form'):
     #form開始
     #スライドイメージの入力
+    
     slide_image = st.text_input('スライドのイメージを記入してください')
 
     #ボタン
