@@ -1,2 +1,2 @@
 transformers
-evaluate-metric/bertscore
+huggingface/evaluate
