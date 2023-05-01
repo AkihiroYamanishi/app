@@ -31,7 +31,7 @@ with st.form(key='profile_form'):
     
     #slide_image = st.text_input('スライドのイメージを記入してください')
     #選択肢をもっと増やす
-    slide_image = st.selectbox('Select item', ['棒グラフ', '滝グラフ', '課題'], index=0)
+    slide_image = st.selectbox('Select item', ['棒グラフ', '滝グラフ', '課題','表'], index=0)
     # index=0 なので初期値は ０番目のもの が表示される。
     st.text(slide_image)
     #ボタン
