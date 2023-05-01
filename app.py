@@ -58,6 +58,7 @@ with st.form(key='profile_form'):
             #st.text(f'〇{best_score[i][1]}')
             #print(best_score[i][1][0:3],)
             #画像を出力
+            st.subheader(f'{i}番目のスライド例')
             image = Image.open(f'./picture/{best_score[i][1][0:5]}.jpg')
             st.image(image, use_column_width=True)
 
