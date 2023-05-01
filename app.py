@@ -2,6 +2,7 @@
 #cd パス
 #streamlit run app.py
 #ｃｔｒｌ＋ｃでコマンドプロンプト終了
+pip install git+https://github.com/huggingface/evaluate.git
 
 import streamlit as st
 from PIL import Image
