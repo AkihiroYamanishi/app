@@ -29,8 +29,11 @@ with st.form(key='profile_form'):
     #form開始
     #スライドイメージの入力
     
-    slide_image = st.text_input('スライドのイメージを記入してください')
-
+    #slide_image = st.text_input('スライドのイメージを記入してください')
+    #選択肢をもっと増やす
+    slide_image = st.selectbox('Select item', ['棒グラフ', '滝グラフ', '課題'], index=0)
+    # index=0 なので初期値は ０番目のもの が表示される。
+    st.text(slide_image)
     #ボタン
     submit_btn = st.form_submit_button('送信')
     cancel_btn = st.form_submit_button('キャンセル')
