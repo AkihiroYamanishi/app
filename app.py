@@ -8,7 +8,7 @@ import streamlit as st
 from PIL import Image
 #from bert_score import score
 import evaluate
-
+from evaluate import load
 
 st.title('山アプリ')
 st.caption('これは実験用のものです')
@@ -33,7 +33,7 @@ with st.form(key='profile_form'):
         #モデルの設定    
         bertscore = evaluate.load("bertscore")
         #スライドイメージマスタデータファイルを開く
-        with open("picture\text.txt") as f:
+        with open("/picture/text.txt") as f:
             list = [line.strip() for line in f]
         #モデルの設定
         model = 'roberta-base'
