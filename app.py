@@ -33,7 +33,7 @@ with st.form(key='profile_form'):
         #モデルの設定    
         bertscore = evaluate.load("bertscore")
         #スライドイメージマスタデータファイルを開く
-        with open("app/picture/text.txt") as f:
+        with open("./picture/text.txt") as f:
             list = [line.strip() for line in f]
         #モデルの設定
         model = 'roberta-base'
