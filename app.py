@@ -31,9 +31,12 @@ with st.form(key='profile_form'):
     
     #slide_image = st.text_input('スライドのイメージを記入してください')
     #選択肢をもっと増やす
-    slide_image = st.selectbox('Select item', ['棒グラフ', '滝グラフ', '課題','表'], index=0)
+    slide_image1 = st.selectbox('Select item', ['背景・現状','課題','施策検討','今後の方針','分析'], index=0)
+    slide_image2 = st.selectbox('Select item', ['','表＿施策カバー範囲','表＿矢印','表＿グラフ','表＿箇条書き','ロジックツリー（原因の分解）','海外状況','散布図','事業分野企業ごと','折れ線グラフ','滝グラフ','棒グラフ＿トレンド','棒グラフ＿強調','棒グラフ＿補足情報','棒グラフ×折れ線グラフ','サイクル','サプライチェーン','スキーム','スキルジャーニー','ヒアリング結果','マトリクス','マトリクス＿方向','ロードマップ'], index=0)
+    slide_image = slide_image1 + slide_image2
     # index=0 なので初期値は ０番目のもの が表示される。
-    st.text(slide_image)
+    #st.text(slide_image)
+    
     #ボタン
     submit_btn = st.form_submit_button('送信')
     cancel_btn = st.form_submit_button('キャンセル')
