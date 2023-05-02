@@ -67,4 +67,15 @@ with st.form(key='profile_form'):
             st.subheader(f'{i+1}番目のスライド例')
             image = Image.open(f'./picture/{best_score[i][1][0:5]}.jpg')
             st.image(image, use_column_width=True)
-
+#出典を明記
+st.text('出典：「https://www.meti.go.jp/meti_lib/report/H30FY/000141.pdf」ボストンコンサルティンググループ')
+st.text('出典：「https://www.meti.go.jp/shingikai/mono_info_service/digital_jinzai/jissenteki_manabi_wg/pdf/001_03_02.pdf」ボストンコンサルティンググループ')
+st.text('出典：「https://www.meti.go.jp/shingikai/enecho/shigen_nenryo/sekiyu_gas/pdf/001_04_00.pdf」マッキンゼーアンドカンパニー')
+st.text('出典：「https://www.mhlw.go.jp/file/05-Shingikai-12201000-Shakaiengokyokushougaihokenfukushibu-Kikakuka/sorupi5.pdf」マッキンゼーアンドカンパニー')
+st.text('出典：「https://www.meti.go.jp/shingikai/mono_info_service/textile_industry/pdf/001_06_00.pdf」ローランドベルガー')
+st.text('出典：「https://www.meti.go.jp/committee/kenkyukai/energy_environment/sekiyu_seisei/pdf/001_06_00.pdf」ローランドベルガー')
+st.text('出典：「https://www.meti.go.jp/shingikai/mono_info_service/new_cvs/pdf/004_02_00.pdf」A.T.カーニー')
+st.text('出典：「https://www.meti.go.jp/shingikai/mono_info_service/smart_mobility_challenge/pdf/20190408_04.pdf」アーサー・ディ・リトル・ジャパン')
+st.text('出典：「https://www.meti.go.jp/press/2020/09/20200928002/20200928002-2.pdf」アーサー・ディ・リトル・ジャパン')
+st.text('出典：「https://www.meti.go.jp/policy/investment/pdf/2021tainichi_chosa.pdf」アクセンチュア')
+st.text('出典：「https://www.meti.go.jp/meti_lib/report/2020FY/000668.pdf」アクセンチュア')
