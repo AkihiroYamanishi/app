@@ -45,7 +45,7 @@ with st.form(key='profile_form'):
     cancel_btn = st.form_submit_button('キャンセル')
     #キャンセルか送信で分ける
     if submit_btn:
-        st.text(f'「{slide_image}」で検索')
+        st.text(f'「{slide_image}」のスライド例を表示')
         #モデルの設定    
         #bertscore = evaluate.load("bertscore")
         #スライドイメージマスタデータファイルを開く
@@ -72,7 +72,7 @@ with st.form(key='profile_form'):
             if i == 6:
                 break
             st.subheader(f'{i+1}番目のスライド例')
-            image = Image.open(f'./picture/{slide_image}/0{i}.jpg')
+            image = Image.open(f'./picture/{slide_image}/0{i+1}.jpg')
             st.image(image, use_column_width=True)
 
 #出典を明記
