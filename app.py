@@ -25,7 +25,7 @@ st.set_page_config(
 #pip install -q evaluate
 #install evaluate
 
-slide_image = st.radio(label='フォーマットを選択してください',options=('01_プロセス','02_並列','03_比較','04_ロジックツリー','05_マトリックス', '06_棒グラフ', '07_散布図', '08_折れ線グラフ', '09_滝グラフ','複合グラフ'),index=0,horizontal=True,)
+slide_image = st.radio(label='フォーマットを選択してください',options=('01_プロセス','02_並列','03_比較','04_ロジックツリー','05_マトリックス', '06_棒グラフ', '07_散布図', '08_折れ線グラフ', '09_滝グラフ','10_複合グラフ'),index=0,horizontal=True,)
 #スライドイメージで選択した画像を一つ表示
 image = Image.open(f'./picture/{slide_image}/01.jpg')
 st.image(image, use_column_width=True)
