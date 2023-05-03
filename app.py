@@ -28,7 +28,7 @@ st.set_page_config(
 slide_image = st.radio(label='フォーマットを選択してください',options=('01_プロセス','02_並列','03_比較','04_ロジックツリー','05_マトリックス', '06_棒グラフ', '07_散布図', '08_折れ線グラフ', '09_滝グラフ','複合グラフ'),index=0,horizontal=True,)
 #スライドイメージで選択した画像を一つ表示
 image = Image.open(f'./picture/{slide_image}/01.jpg')
-st.image(image, width=30)
+st.image(image, use_column_width=True)
 
 with st.form(key='profile_form'):
     #form開始
@@ -62,7 +62,7 @@ with st.form(key='profile_form'):
             #best_score = sorted(ls_score_pred,reverse=True)
         #フォルダの中のファイル数を確認
         dir = f'./picture/{slide_image}'
-        count_file = print(sum(os.path.isfile(os.path.join(dir,name)) for name in os.listdir(dir)))
+        count_file = sum(os.path.isfile(os.path.join(dir,name)) for name in os.listdir(dir))
         #ベスト5を表示
         for i in range(count_file):
             #best3を出力
