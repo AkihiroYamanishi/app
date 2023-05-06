@@ -46,11 +46,6 @@ YOUR_CHANNEL_SECRET = 'c8f10886ce5d465a8948b85daf56a168'
 #openai.api_key = "YOUR_OPENAI_API_KEY"
 #model_engine = "text-davinci-002"
 
-st.line_bot.run(on_receive_message, channel_access_token=st.secrets['line'][YOUR_CHANNEL_ACCESS_TOKEN],channel_secret=st.secrets['line'][(YOUR_CHANNEL_SECRET])
-
-
-# メッセージを受信したときに呼び出される関数
-#@handler.add(MessageEvent, message=TextMessage)
 def on_receive_message(messages):
     for message in messages:
         user_id = message.source.user_id
@@ -59,6 +54,13 @@ def on_receive_message(messages):
         #    message.reply_token,
         #    TextSendMessage(text=f'Hello, {text}!'))
         st.text(text)
+
+st.line_bot.run(on_receive_message, channel_access_token=st.secrets['line'][YOUR_CHANNEL_ACCESS_TOKEN],channel_secret=st.secrets['line'][YOUR_CHANNEL_SECRET])
+
+
+# メッセージを受信したときに呼び出される関数
+#@handler.add(MessageEvent, message=TextMessage)
+
 
 
 
