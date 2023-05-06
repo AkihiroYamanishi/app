@@ -1,49 +1,34 @@
-import streamlit as st
-import requests
-import transformers
+from flask import Flask, request, abort
+from linebot import LineBotApi, WebhookHandler
+from linebot.exceptions import InvalidSignatureError
+from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
-# Set the LINE API endpoint
-LINE_API_ENDPOINT = "https://api.line.me/v2/bot/message/reply"
+app = Flask(__name__)
 
-# Get the LINE access token
-LINE_ACCESS_TOKEN = "lHM1G3h54yfPos/iBAidDmsSSOAibMN7FpwXG285jWrinDeKC5/cQnoOWG7trZ5lbbeyTB3kp9jdVr8hy8fXlwWr23xuC0FhMQtVLiBkflYf8HiHI+WA4SFUcMrAyiSyd1wivwnna6FC4p9NFTdGGQdB04t89/1O/w1cDnyilFU="
+# チャネルアクセストークンとチャネルシークレットを設定する
+YOUR_CHANNEL_ACCESS_TOKEN = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+YOUR_CHANNEL_SECRET = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
+handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
-# Load the ChatGPT model
-model = transformers.AutoModelForSeq2SeqLM.from_pretrained("facebook/bart-base")
+# Webhookを受信するエンドポイント
+@app.route("/callback", methods=['POST'])
+def callback():
+    # LINEからのリクエストが正当かどうかをチェックする
+    signature = request.headers['X-Line-Signature']
+    body = request.get_data(as_text=True)
+    try:
+        handler.handle(body, signature)
+    except InvalidSignatureError:
+        abort(400)
+    return 'OK'
 
-# Create a function to send a message to the LINE app
-def send_message(message):
-    # Create a request body
-    request_body = {
-        "to": "1661055658",
-        "messages": [
-            {
-                "type": "text",
-                "text": message
-            }
-        ]
-    }
+# Lineから送信されたメッセージを処理する関数
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+    if event.message.text == "こんにちは":
+        reply_message = "こんにちは！"
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
 
-    # Send the request
-    response = requests.post(LINE_API_ENDPOINT, headers={"Authorization": "Bearer {}".format(LINE_ACCESS_TOKEN)}, data=request_body)
-
-    # Check the response status code
-    if response.status_code == 200:
-        return True
-    else:
-        return False
-
-# Create a Streamlit app
-st.title("LINE Bot")
-
-# Get the user input
-message = st.text_input("Enter your message:")
-
-# Generate a response from ChatGPT
-response = model.generate(max_length=50)
-
-# Send the response to the LINE app
-if send_message(response):
-    st.success("Message sent successfully!")
-else:
-    st.error("Error sending message!")
+if __name__ == "__main__":
+    app.run()
