@@ -6,8 +6,8 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 app = Flask(__name__)
 
 # チャネルアクセストークンとチャネルシークレットを設定する
-YOUR_CHANNEL_ACCESS_TOKEN = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-YOUR_CHANNEL_SECRET = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+YOUR_CHANNEL_ACCESS_TOKEN = "c8f10886ce5d465a8948b85daf56a168"
+YOUR_CHANNEL_SECRET = "lHM1G3h54yfPos/iBAidDmsSSOAibMN7FpwXG285jWrinDeKC5/cQnoOWG7trZ5lbbeyTB3kp9jdVr8hy8fXlwWr23xuC0FhMQtVLiBkflYf8HiHI+WA4SFUcMrAyiSyd1wivwnna6FC4p9NFTdGGQdB04t89/1O/w1cDnyilFU="
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
