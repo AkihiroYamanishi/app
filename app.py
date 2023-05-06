@@ -40,7 +40,7 @@ st.title("LINE Bot")
 message = st.text_input("Enter your message:")
 
 # Generate a response from ChatGPT
-response = model.generate(text=message, max_length=50)
+response = model.generate(max_length=50)
 
 # Send the response to the LINE app
 if send_message(response):
