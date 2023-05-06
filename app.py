@@ -78,7 +78,7 @@ def callback():
     body = request.get_data(as_text=True)
     try:
         handler.handle(body, signature)
-
+    return 'OK'
 
 
 
