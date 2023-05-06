@@ -55,7 +55,7 @@ def on_receive_message(messages):
         #    TextSendMessage(text=f'Hello, {text}!'))
         st.text(text)
 
-st.line_bot.run(on_receive_message, channel_access_token=st.secrets['line'][YOUR_CHANNEL_ACCESS_TOKEN],channel_secret=st.secrets['line'][YOUR_CHANNEL_SECRET])
+st.line_bot.run(on_receive_message, channel_access_token=st.secrets[YOUR_CHANNEL_ACCESS_TOKEN],channel_secret=st.secrets[YOUR_CHANNEL_SECRET])
 
 
 # メッセージを受信したときに呼び出される関数
