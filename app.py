@@ -1,34 +1,33 @@
-from flask import Flask, request, abort
-from linebot import LineBotApi, WebhookHandler
-from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage
+#コマンドプロンプトで以下を入力すると開ける
+#cd パス
+#streamlit run app.py
+import streamlit as st
+from PIL import Image
 
-app = Flask(__name__)
+st.title('山アプリ')
+st.caption('これは実験用のものです')
+st.subheader('自己紹介')
+st.text('こんにちは')
 
-# チャネルアクセストークンとチャネルシークレットを設定する
-YOUR_CHANNEL_ACCESS_TOKEN = "c8f10886ce5d465a8948b85daf56a168"
-YOUR_CHANNEL_SECRET = "lHM1G3h54yfPos/iBAidDmsSSOAibMN7FpwXG285jWrinDeKC5/cQnoOWG7trZ5lbbeyTB3kp9jdVr8hy8fXlwWr23xuC0FhMQtVLiBkflYf8HiHI+WA4SFUcMrAyiSyd1wivwnna6FC4p9NFTdGGQdB04t89/1O/w1cDnyilFU="
-line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
-handler = WebhookHandler(YOUR_CHANNEL_SECRET)
+#画像
+image = Image.open('Shohei_Ohtani_(52251755266)_(cropped).jpg')
+st.image(image, width=200)
 
-# Webhookを受信するエンドポイント
-@app.route("/callback", methods=['POST'])
-def callback():
-    # LINEからのリクエストが正当かどうかをチェックする
-    signature = request.headers['X-Line-Signature']
-    body = request.get_data(as_text=True)
-    try:
-        handler.handle(body, signature)
-    except InvalidSignatureError:
-        abort(400)
-    return 'OK'
 
-# Lineから送信されたメッセージを処理する関数
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    if event.message.text == "こんにちは":
-        reply_message = "こんにちは！"
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
+with st.form(key='profile_form'):
+    #動画
+    #video_file = open('https://www.youtube.com/watch?v=mmK_gRbb2lQ')
+    #video_bytes = video_file.read()
+    #st.video(video_bytes)
 
-if __name__ == "__main__":
-    app.run()
+    #テキストボックス
+    name = st.text_input('名前')
+    #画面がリロードされると値が入ってくるが、カーソルがテキストボックスから外れるとリロードされる
+
+    #ボタン
+    submit_btn = st.form_submit_button('送信')
+    cancel_btn = st.form_submit_button('キャンセル')
+
+    #キャンセルか送信で分ける
+    if submit_btn:
+        st.text(f'ようこそ!{name}さん！')
