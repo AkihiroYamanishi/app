@@ -39,49 +39,51 @@ YOUR_CHANNEL_SECRET = 'c8f10886ce5d465a8948b85daf56a168'
 # Line Messaging APIのURL
 #line_api_url = 'https://api.line.me/v2/bot/message/reply'
 
-line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
-handler = WebhookHandler(YOUR_CHANNEL_SECRET)
+#line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
+#handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 # OpenAI APIの設定を行います
-openai.api_key = "YOUR_OPENAI_API_KEY"
-model_engine = "text-davinci-002"
+#openai.api_key = "YOUR_OPENAI_API_KEY"
+#model_engine = "text-davinci-002"
+
+st.line_bot.run(on_receive_message, channel_access_token=st.secrets['line'][YOUR_CHANNEL_ACCESS_TOKEN],channel_secret=st.secrets['line'][(YOUR_CHANNEL_SECRET])
+
 
 # メッセージを受信したときに呼び出される関数
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    # ユーザーから受信したメッセージを取得します
-    received_message = event.message.text
+#@handler.add(MessageEvent, message=TextMessage)
+def on_receive_message(messages):
+    for message in messages:
+        user_id = message.source.user_id
+        text = message.message.text
+        #st.line_bot.reply_message(
+        #    message.reply_token,
+        #    TextSendMessage(text=f'Hello, {text}!'))
+        st.text(text)
 
-    # ユーザーから受信したメッセージをOpenAIに送信して、応答を取得します
-    response = openai.Completion.create(
-        engine=model_engine,
-        prompt=received_message,
-        max_tokens=1024,
-        n=1,
-        stop=None,
-        temperature=0.7
-    )
+
+
+#def handle_message(event):
+#    # ユーザーから受信したメッセージを取得します
+#    received_message = event.message.text
+
+#    # ユーザーから受信したメッセージをOpenAIに送信して、応答を取得します
+#    response = openai.Completion.create(
+#        engine=model_engine,
+#        prompt=received_message,
+#        max_tokens=1024,
+#        n=1,
+#        stop=None,
+#        temperature=0.7
+#    )
 
     # OpenAIから受信した応答を取得します
-    message_text = response.choices[0].text.strip()
+#    message_text = response.choices[0].text.strip()
 
     # ユーザーに応答を送信します
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=message_text)
-    )
-
-# LINE Messaging APIからのWebhook URLを受信するエンドポイント
-@app.route("/callback", methods=["POST"])
-def callback():
-    signature = request.headers["X-Line-Signature"]
-    body = request.get_data(as_text=True)
-    try:
-        handler.handle(body, signature)
-    except InvalidSignatureError:
-        abort(400)
-
-    return 'OK'
+#    line_bot_api.reply_message(
+#        event.reply_token,
+#        TextSendMessage(text=message_text)
+#    )
 
 
 
